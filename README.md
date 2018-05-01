@@ -11,7 +11,7 @@ term stock price patterns using a gaussian process with a trained
 spectral kernel. This work was inspired by previous work using a
 gaussian process with an RBF kernel to perform portfolio
 optimization. The portfolio optimization was performed using daily
-data. The trained gaussian process was used to the predict price of
+data. The trained gaussian process was used to predict the price of
 the stocks over the next day which would be used to rebalance the
 portfolio.
 
@@ -43,10 +43,10 @@ data to predict how the stock price will change in the next minute. If
 we predict it will rise we retain our stock, and if we predict it
 falls we will sell the stock.
 
-This is trading strategy is neither practical or optimal and is used for
+This trading strategy is neither practical or optimal and is used for
 its simplicity. The model is not practical because moving your entire
-holding of the stock every minute is going to have a lot of market
-friction. The model is not optimal because it only using a small
+holding of the stock every minute is going to have a strong impact of market
+friction. The model is not optimal because it only uses a small
 amount of the model's prediction. A better model would probably be to
 use the model's prediction over the next several minutes and
 incorporate the model's confidence in its predictions.
