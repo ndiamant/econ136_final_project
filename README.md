@@ -1,6 +1,6 @@
 # econ136_final_project
 
-Github repository of project code: <github.com/ndiamant/econ136_final_project>
+Github repository of project code: <https://github.com/ndiamant/econ136_final_project>
 
 ### Contributors
 Nate Diamant, Jeffrey Rutledge, Kyle Suver, Daniel Gorelik
