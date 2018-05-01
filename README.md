@@ -30,10 +30,7 @@ period away may be more relevant than a close point. This spectral
 kernel is trained using some kind of numerical optimization to
 maximize likelihood.
 
-## Viability
-In order to test the viability of this modeling technique we have
-attempted to use the model to fit some of the data and inspected its
-performance.
+[//]: # (## Viability In order to test the viability of this modeling technique we have attempted to use the model to fit some of the data and inspected its performance.)
 
 ## Back Testing
 We have also implemented a very simple strategy to perform some back
@@ -44,7 +41,7 @@ data to predict how the stock price will change in the next minute. If
 we predict it will rise we retain our stock, and if we predict it
 falls we will sell the stock.
 
-This is trading model is neither practical or optimal and is used for
+This is trading strategy is neither practical or optimal and is used for
 its simplicity. The model is not practical because moving your entire
 holding of the stock every minute is going to have a lot of market
 friction. The model is not optimal because it only using a small
@@ -54,9 +51,52 @@ incorporate the model's confidence in its predictions.
 
 Below are some examples of the log return ratio of this strategy in
 action. (If you start with `x` dollars and the final log return ratio
-was $r$ then you would end with `exp(r) * x` dollars.)
+was `r` then you would end with `exp(r) * x` dollars.) The `y`-axis is
+the log return ratio and the `x`-axis is minutes. The blue line is the
+performance of the simple trading strategy proposed above, and the green
+line is holding the assets the entire time, i. e. the market's performance.
 
-![crash_sensitivity_backtest](plots/backtests/crash_sensitivity.png "Crash Sensitivity")
+![crash_sensitivity_backtest](plots/backtests/crash_sensitivity.png
+"Crash Sensitivity")
+The above plot was a trial run of the back test code to see if it
+functioned well, so the kernel was only trained on 50 minutes of
+previous data. Therefore, the kernel is unlikely to have fit the
+patterns well and the run will probably under perform. However, the
+plot is till interesting because it reveals a potential flaw in the
+model. At one of the minutes the stock had a sudden unexpected
+drop. Our model didn't predict this, which is not surprising because
+the training data didn't contain any of these patterns, so it stayed
+in the stock. However, after it crashed the model predicted it would
+continue and so sold the stock. Ultimately, causing a huge loss.
+
+This suggests that the model needs some kind of filter to catch events
+like this. The model probably had a really low confidence in its
+prediction after the sudden crash, which would be useful for
+constructing the filter.
+
 ![potential_to_beat_the_market](plots/backtests/potential_to_beat_market.png
 "Potential to Beat the Market")
+The above plot shows an example of back testing with the kernel
+trained on a more reasonable amount of historical data, 500
+minutes. Although, the model ends just about even the market there are
+two regions where it strongly outperforms the market. This suggests
+that with an improved trading strategy the model has the potential to
+beat the market.
+
 ![tying_market](plots/backtests/tying_market.png "Tying Market")
+The above plot shows an example of back testing with the kernel
+trained on a more reasonable amount of historical data, 500
+minutes. This one shows how the model performs over 2000 minutes
+instead of the 1000 shown above. The model's performance seems to
+degrade significantly in the latter 1000 minutes which suggests that
+the kernel may need to be periodically retrained to learn relevant
+local patterns.
+
+
+## Conclusion
+We believe the above data warrants further investigation. Considering
+that the simple trading strategy used to back test doesn't even utilize all of the
+model's information, but still has the ability to outperform the
+market, suggests that an improved trading strategy may be consistently
+profitable. Furthermore, there are many hyperparameter that could be
+tuned to potentially improve the spectral kernel learning.
