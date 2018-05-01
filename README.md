@@ -55,3 +55,8 @@ incorporate the model's confidence in its predictions.
 Below are some examples of the log return ratio of this strategy in
 action. (If you start with `x` dollars and the final log return ratio
 was $r$ then you would end with `exp(r) * x` dollars.)
+
+![crash_sensitivity_backtest](plots/backtests/crash_sensitivity.png "Crash Sensitivity")
+![potential_to_beat_the_market](plots/backtests/potential_to_beat_market.png
+"Potential to Beat the Market")
+![tying_market](plots/backtests/tying_market.png "Tying Market")
