@@ -1,9 +1,14 @@
-# ECON136 Final Project
+ECON136 Final Project
+----------------
+*Nate Diamant, Jeffrey Rutledge, Kyle Suver, Daniel Gorelik*
 
-Github repository of project code: <https://github.com/ndiamant/econ136_final_project>
+*May 2, 2018*
 
-### Contributors
-Nate Diamant, Jeffrey Rutledge, Kyle Suver, Daniel Gorelik
+Github repository of project code:
+
+<https://github.com/ndiamant/econ136_final_project>
+
+____________________
 
 ## Introduction
 Our project's goal is to evaluate the viability of modeling short
